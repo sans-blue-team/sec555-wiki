@@ -22,6 +22,8 @@ SEC555
 - #### Reference
 -	[Regex Cheat Sheet by Fedora People](/Resources/regular-expressions-cheat-sheet-v1.pdf)
 -	[Windows Event Logs Table](/Tools/WindowsEventLogsTable.md)
+-   [LogStash Config Architecture](/Resources/LogStashConfigArch.md)
+-   [Field Naming Standards](/Resources/FieldNameGuidelines.md)
 
 [Tools/Commands]()
 
