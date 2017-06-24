@@ -46,3 +46,4 @@ SEC555
 
 - [Submit Bug/Suggestion](/Updates/Bugs.md)
 - [Course Suggestion](/Updates/Suggest.md)
+
