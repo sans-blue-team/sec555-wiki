@@ -1,17 +1,6 @@
 SEC555
 ======
 
-[Labs]()
-
-- [All Labs](/Labs/Labs.md)
-- [Linux VM Setup Guide](/Labs/setup/A/sec555.A.md)
-- [VMware Bridged Mode How To](/Labs/setup/B/sec555.B.md)
-- [555.1](/Labs/555_1/555.1.md)
-- [555.2](/Labs/555_2/555.2.md)
-- [555.3](/Labs/555_3/555.3.md)
-- [555.4](/Labs/555_4/555.4.md)
-- [555.5](/Labs/555_5/555.5.md)
-
 [Primers/Reference]()
 
 - #### Primers
