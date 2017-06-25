@@ -218,7 +218,7 @@ Input configuration for accepting logs on TCP port 1025:
 ```javascript
 input {
     tcp {
-        port => 1024
+        port => 1025
     }
 }
 ```
@@ -226,7 +226,7 @@ It is recommended to add either a tag or type or both to all inputs. These shoul
 ```javascript
 input {
     tcp {
-        port => 1024
+        port => 1025
         type => "name_goes_here"
         tags => "name_goes_here"
     }
@@ -255,7 +255,7 @@ Input configuration for accepting logs on UDP port 1025:
 ```javascript
 input {
     udp {
-        port => 1024
+        port => 1025
     }
 }
 ```
@@ -263,7 +263,7 @@ It is recommended to add either a tag or type or both to all inputs. These shoul
 ```javascript
 input {
     udp {
-        port => 1024
+        port => 1025
         type => "name_goes_here"
         tags => "name_goes_here"
     }
@@ -322,7 +322,7 @@ input {
 ### kafka
 The **kafka** input plugin is an input plugin that retrieves logs stored in Kafka, which is a common third party message broker/log buffer.
 
-This example shows the basic rabbitmq settings needed by Logstash:
+This example shows the basic kafka settings needed by Logstash:
 ```javascript
 input {
   kafka {
