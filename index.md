@@ -24,13 +24,13 @@ Important: If you are using the student VM included when taking SEC555 you have 
 
 In order to enable automatic wiki/lab updating run the following command:
 
-``bash
+```bash
 sudo crontab -e
-``
+```
 
 Then uncomment the cron job for either the 9 AM automatic update or the update after reboot (or both):
 
-``bash
+```bash
 # Uncomment the below entry to automatically update the SEC555
 # wiki. The default check occurs at 9 AM but can be changed.
 #0 9 * * * powershell -file /home/student/wiki_update.ps1
@@ -38,11 +38,11 @@ Then uncomment the cron job for either the 9 AM automatic update or the update a
 # Uncomment the below entry to automatically update the SEC555
 # wiki after each reboot.
 #@reboot powershell -file /home/student/wiki_update.ps1
-``
+```
 
 When finished the cron entry should look similar to this:
 
-``bash
+```bash
 # Uncomment the below entry to automatically update the SEC555
 # wiki. The default check occurs at 9 AM but can be changed.
 0 9 * * * powershell -file /home/student/wiki_update.ps1
@@ -50,8 +50,7 @@ When finished the cron entry should look similar to this:
 # Uncomment the below entry to automatically update the SEC555
 # wiki after each reboot.
 @reboot powershell -file /home/student/wiki_update.ps1
-
-``
+```
 
 ---
 
