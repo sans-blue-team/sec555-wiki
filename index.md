@@ -20,7 +20,7 @@ Contained in the wiki, you will find:
 - Tool and technique cheat sheets
 ...and more
 
-Important: If you are using the student VM included when taking SEC555 you have the capability of turning on automatic wiki/lab updating.
+Note: If you are using the student VM included when taking SEC555 you have the capability of turning on automatic wiki/lab updating.
 
 In order to enable automatic wiki/lab updating run the following command:
 
