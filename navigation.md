@@ -27,7 +27,7 @@ SEC555
 - [freq.py](/Tools/freq.py.md)
 - [freq_server.py](/Tools/freq_server.py.md)
 <!-- Log Agent - beats -->
-<!-- Log Agent - nxlog -->
+- [NXLog](/Tools/NXLog.md)
 - [kopf](/Tools/kopf.md)
 <!-- Suricata -->
 
