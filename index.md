@@ -22,7 +22,17 @@ Contained in the wiki, you will find:
 
 Note: If you are using the student VM included when taking SEC555 you have the capability of turning on automatic wiki/lab updating.
 
-In order to enable automatic wiki/lab updating run the following command:
+Recommendations - PLEASE READ
+----------
+There are two things that are highly recommended to do before diving in.
+
+1. Discover how to use the Smart Player. Videos are played using Smart Player and there are some features you may not know exist without checking [out this guide](./resources/SmartPlayer.md)
+2. If you are a SEC555 student, enable automatic updates of the wiki and lab content
+
+Enable Automatic Updates
+----------
+
+This section only applies to students of SEC555 using the wiki within the SEC555 course provided student virtual machine. In order to enable automatic wiki/lab updating run the following command:
 
 ```bash
 sudo crontab -e
