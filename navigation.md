@@ -13,6 +13,7 @@ SEC555
 -	[Windows Event Logs Table](/Tools/WindowsEventLogsTable.md)
 -   [LogStash Config Architecture](/Resources/LogStashConfigArch.md)
 -   [Field Naming Standards](/Resources/FieldNameGuidelines.md)
+-   [Smart Player - How To Use](/Resources/SmartPlayer.md)
 
 [Tools/Commands]()
 

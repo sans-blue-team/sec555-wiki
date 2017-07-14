@@ -29,4 +29,20 @@ The most time consuming part of Smart Player is making the videos searchable. Th
 
 <img src="./media/video_searching.png" />
 
+**Closed Captions**
+
+Closed captions allows you to read what the video presenter is saying on the screen. To enable it or disable it click on the closed caption icon.
+
+<img src="./media/closed_caption_support.png" />
+
 **Interactive links**
+
+Sometimes content within a video is interactive and can be clicked on to open links to relavent information pertaining to the video being watched.
+
+<img src="./media/hotspot_images.png" />
+
+**Changing play speed**
+
+To change the playback speed of a video click on the gear icon and set the playback speed. The choice of speed is a multiplier. For example, selecting 2.0 will make the video play twice as fast as normal. Selecting 0.5 would half the video playback speed.
+
+<img src="./media/play_speed.png" />
