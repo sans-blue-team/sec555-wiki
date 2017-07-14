@@ -26,7 +26,7 @@ Recommendations - PLEASE READ
 ----------
 There are two things that are highly recommended to do before diving in.
 
-1. Discover how to use the Smart Player. Videos are played using Smart Player and there are some features you may not know exist without checking [out this guide](./resources/SmartPlayer.md)
+1. Discover how to use the Smart Player. Videos are played using Smart Player and there are some features you may not know exist without checking [out this guide](/Resources/SmartPlayer.md)
 2. If you are a SEC555 student, enable automatic updates of the wiki and lab content
 
 Enable Automatic Updates
