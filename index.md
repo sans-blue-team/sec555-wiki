@@ -8,11 +8,13 @@ Welcome to the SANS SEC555 Wiki
 
 ---
 
-The goal of the SEC555 wiki is to increase the **in-class**, and, most importantly, **after-class** value of the course material. This wiki is, and likely always will be, very much a work in progress.
+The goal of the SEC555 wiki is to increase the **in-class**, and, most importantly, **after-class** value of the course material. It is also designed as a method to give back to the security community by providing free information. This wiki is, and likely always will be, very much a work in progress.
 
 Contained in the wiki, you will find:
-- Electronic Copies of the Lab Guides (**copy and paste, FTW!!!**) (**Digital labs are only available on student VM - SEC555 course attendees only**)
 - Tool and technique cheat sheets
+- Reference guides
+- Information about 555 instructors
+- Electronic Copies of the Lab Guides (**copy and paste, FTW!!!**) (**Digital labs are only available on student VM - SEC555 course attendees only**)
 ...and more
 
 Note: If you are using the student VM included when taking SEC555 you have the capability of turning on automatic wiki/lab updating.
