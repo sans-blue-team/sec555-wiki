@@ -11,7 +11,7 @@ Contact
 
 **Google+** | []()
 
-**Blog** | [Blogs](https://www.hasecuritysolutions.com/blog)
+**Blog** | [Blogs on H & A website](https://www.hasecuritysolutions.com/blog)
 
 **YouTube** | []()
 
@@ -25,7 +25,7 @@ Affiliations
 Bio
 -----------
  
-Blahblahblah
+Justin is a passionate security architect and researcher with over decade of experience working in the Healthcare industry. He has also had multiple opportunities to work on government contracts specializing in network monitoring systems and incident analysis. Justin was the 13th GSE to become both a red and blue SANS Cyber Guardian and holds over 50 industry certifications.
 
 Recommendations
 ----------------
