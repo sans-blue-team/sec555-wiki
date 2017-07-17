@@ -11,9 +11,9 @@ Logstash can load a single configuration file or multiple. In production environ
 
 For example:
 
-**0XXX** is for input files. These are used to accept logs off the network or pull logs from a database or log buffer. A file called 0001_input_firewall_palo_alto.conf may accept firewall logs and 0002_input_bro_conn.conf may accept bro conn logs
-**1XXX** is for initial parsing. These configuration files parse out the initial fields. 1001_firewall_palo_alto.conf would parse out the fields for palo alto such as by using kv. 1002_bro_conn.conf would parse out bro fields either with grok or csv.
-**8XXX** is for post processing. This is were standardized enrichment is applied. For example, you could take the field called source_ip and perform geoip lookups, threat intelligence feed checks, etc in a file called 8001_ip_enrichment.conf. This file would work for both fields from bro_conn and the firewall logs.
+**0XXX** is for input files. These are used to accept logs off the network or pull logs from a database or log buffer. A file called **0001_input_firewall_palo_alto.conf** may accept firewall logs and **0002_input_bro_conn.conf** may accept bro conn logs
+**1XXX** is for initial parsing. These configuration files parse out the initial fields. **1001_firewall_palo_alto.conf** would parse out the fields for palo alto such as by using kv. **1002_bro_conn.conf** would parse out bro fields either with grok or csv.
+**8XXX** is for post processing. This is were standardized enrichment is applied. For example, you could take the field called source_ip and perform geoip lookups, threat intelligence feed checks, etc in a file called **8001_ip_enrichment.conf**. This file would work for both fields from bro_conn and the firewall logs.
 
 With the example above you would not have to apply enrichment per each data source as the file 8001_ip_enrichment.conf does it for all logs that have a source_ip field.
 
