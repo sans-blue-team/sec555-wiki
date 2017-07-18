@@ -301,6 +301,7 @@ input {
     host => "rabbitmq_server_goes_here"
     port => 5672
   }
+}
 ```
 
 This example below shows the basic RabbitMQ settings needed by Logstash but also includes some tags for troubleshooting. It assumes that it is pulling Windows logs out of a queue for Windows. The tags help troubleshoot issues related to a specific queue.
@@ -317,6 +318,7 @@ input {
     port => 5672
     tags => [ "queue_windows", "rabbitmq" ]
   }
+}
 ```
 
 ### kafka
@@ -329,6 +331,7 @@ input {
     zk_connect => "kafka_server_goes_here:2181"
     topic_id => [ "logstash" ]
   }
+}
 ```
 
 This example below shows the basic Kakfa settings needed by Logstash but also includes some tags for troubleshooting. It assumes that it is pulling Windows logs out of a queue for Windows. The tags help troubleshoot issues related to a specific queue.
@@ -339,6 +342,7 @@ input {
     topic_id => [ "windows" ]
     tags => [ "queue_windows", "kafka" ]
   }
+}
 ```
 
 Filter Parsing Plugins

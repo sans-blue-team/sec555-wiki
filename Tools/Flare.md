@@ -15,7 +15,7 @@ Flare helps us solve the problem by applying automated analysis of flow data.
 
 Where to Acquire
 ---------
-Flare can be downloaded from https://www.elastic.co/products/elasticsearch. 
+Flare can be downloaded from https://github.com/austin-taylor/flare. 
 
 Examples/Use Case
 ---------
