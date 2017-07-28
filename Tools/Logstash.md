@@ -16,6 +16,7 @@ General Knowledge
 ---------
 - [type](#type)
 - [tags](#tags)
+- [conditional logic](#logic) - If statements
 <!-- - [architecture](#architecture) -->
 
 ---------
@@ -122,6 +123,110 @@ filter {
       }
     }
   }
+}
+```
+
+---------
+### logic
+
+Conditional logic is required to properly scale and use Logstash in an enterprise environment. It allows you to accept, parse, or enrich logs based on specific conditions.
+
+A simple condition would be to do something **IF** a value equals something specific. Example:
+```javascript
+filter {
+    if [field] == "7" {
+        do_something...
+    }
+}
+```
+
+#### Conditions dealing with Numbers
+
+**Note:** That "7" is not the same as 7. **"7"** means the string of 7 and **7** means an integer of 7. If the field contained the integer 7 you would need to do this:
+```javascript
+filter {
+    if [field] == 7 {
+        do_something...
+    }
+}
+```
+
+If a field contains a number value than you can use greater than or less than. Examples:
+```javascript
+filter {
+    if [field] > 7 {
+        do_something...
+    }
+}
+```
+
+```javascript
+filter {
+    if [field] < 7 {
+        do_something...
+    }
+}
+```
+
+You can also do less than or equal to and greater than or equal to. Example:
+```javascript
+filter {
+    if [field] >= 7 {
+        do_something...
+    }
+}
+```
+
+#### Conditions dealing with Strings
+
+When checking against a string you can do an exact match such as follows:
+```javascript
+filter {
+    if [field] == "string" {
+        do_something...
+    }
+}
+```
+
+Or you can do a regex match such as below. The **=~** specifies a regex match. The example below looks for the string "string" followed by any characters.
+```javascript
+filter {
+    if [field] =~ "string*" {
+        do_something...
+    }
+}
+```
+
+#### Condition checks against a field's existance
+If you want to apply a configuration but only if a field exists use this:
+```javascript
+filter {
+    if [field] {
+        do_something...
+    }
+}
+```
+
+The syntax **if [field] {** means only run if the field **field** exists.
+
+#### Handling multiple conditions
+
+Sometimes you need to apply multiple logical conditions. To do this use **and** and **or**. For example, the below configuration requires a specific string for **field1** and an integer over 5 for **field2**.
+```javascript
+filter {
+    if [field1] == "string" and [field2] > 5 {
+        do_something...
+    }
+}
+```
+
+This is a similar example but where **field1** needs to be set to string **or** **field2** needs to be over 5.
+
+```javascript
+filter {
+    if [field1] == "string" or [field2] > 5 {
+        do_something...
+    }
 }
 ```
 
@@ -1033,7 +1138,7 @@ This example config removes the syslog_message field:
 ```javascript
 filter {
     mutate {
-        remove_filed => [ "syslog_message" ]
+        remove_field => [ "syslog_message" ]
     }
 }
 ```
@@ -1319,6 +1424,7 @@ This could help take a destination_port of 80 and use it to add a field called d
 
 Output Plugins
 ---------
+- [stdout](#stdout)
 - [elasticsearch](#output_elasticsearch)
 - [file](#output_file)
 - [rabbitmq](#output_rabbitmq)
@@ -1327,6 +1433,60 @@ Output Plugins
 - [udp](#output_udp)
 
 ---------
+### stdout
+The **stdout** plug is an output plugin used to output to the screen. It is useful for troubleshooting or testing.
+
+This example configuration is used to output to the screen with pretty markup. This is the most common way to invoke **stdout** and is probably what you want to use.
+```javascript
+output {
+  stdout { codec => rubydebug }
+}
+```
+
+Using the above configuration will display output similar to this:
+```bash
+{
+             "message" => "2017-07-25T17:49:37.356Z sec-555-linux 1496523628.328546\tCfnUMi23OlkVdjx0Wi\t10.0.1.11\t38938\t10.0.0.10\t53\tudp\t46693\t0.001092\tlogingest.test.int\t1\tC_INTERNET1\tA\t0\tNOERROR\tT\tF\tTT0\t172.16.1.10\t3600.000000\tF",
+            "@version" => "1",
+          "@timestamp" => "2017-07-25T17:50:10.710Z",
+                "host" => "sec-555-linux",
+           "timestamp" => "2017-07-25T17:49:37.356Z sec-555-linux 1496523628.328546",
+                 "uid" => "CfnUMi23OlkVdjx0Wi",
+           "source_ip" => "10.0.1.11",
+         "source_port" => "38938",
+      "destination_ip" => "10.0.0.10",
+    "destination_port" => "53",
+            "protocol" => "udp",
+      "transaction_id" => "46693",
+                 "rtt" => "0.001092",
+               "query" => "logingest.test.int",
+         "query_class" => "1",
+    "query_class_name" => "C_INTERNET1",
+          "query_type" => "A",
+     "query_type_name" => "0",
+               "rcode" => "NOERROR",
+          "rcode_name" => "T",
+                  "aa" => "F",
+                  "tc" => "TT0",
+                  "rd" => "172.16.1.10",
+                  "ra" => "3600.000000",
+                   "z" => "F"
+}
+```
+
+The alternative way to run **stdout** is to just invoke it such as in this configuration:
+```javascript
+output {
+  stdout { }
+}
+```
+
+However, the output is not user friendly and will look like this:
+
+```bash
+2017-07-25T17:49:37.356Z sec-555-linux 1496523628.328546	CfnUMi23OlkVdjx0Wi	10.0.1.11	38938	10.0.0.10	53	udp	46693	0.001092	logingest.test.int	1	C_INTERNET1	A	0	NOERROR	T	F	TT0	172.16.1.10	3600.000000	F
+```
+
 ### output_elasticsearch
 The **elasticsearch** plugin is an output plugin used to send logs to an Elasticsearch index.
 
