@@ -507,6 +507,15 @@ filter {
 }
 ```
 
+The below example configuration attempts to match a timestamp based on the traditional UNIX timestamp format format such as 1496031788.649121 (taken from Bro log).
+```javascript
+filter {
+    date {
+      match => ["timestamp", "UNIX"]
+    }
+}
+```
+
 The below example configuration attempts to match a timestamp based ISO8601 format which is 2017-07-06T04:30:00.100Z.
 ```javascript
 filter {
