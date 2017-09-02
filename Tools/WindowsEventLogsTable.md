@@ -8,7 +8,7 @@
 | Security || 7045, 10000, 10001, 10100, 20001, 20002, 20003, 24576, 24577, 24579 | Insert USB |
 | Security || 4624 |  An account was successfully logged on |
 | Security || 4625 |  An account failed to log on |
-| Security || 4698 |  User ... registered Task Scheudler task ... |
+| Security || 4698 |  User ... registered Task Scheduler task ... |
 | Security || 4720 |  A user account was created |
 | Security || 4722 | A user account was enabled |
 | Secutity || 4724, 4738 | Additional user creation events |

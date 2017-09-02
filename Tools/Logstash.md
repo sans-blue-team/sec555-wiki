@@ -241,6 +241,10 @@ Input Plugins
 - [rabbitmq](#rabbitmq)
 - [kafka](#kafka)
 
+Special considerations (not actual plugins)
+
+- [codecs](#codecs)
+
 ---------
 ### beats
 The **beats** plugin is an input plugin used to accept logs from beats agents such as winlogbeat and filebeat.
@@ -447,6 +451,35 @@ input {
     topic_id => [ "windows" ]
     tags => [ "queue_windows", "kafka" ]
   }
+}
+```
+
+---------
+### codecs
+
+Codecs can be used in input plugins to tell Logstash what data representation to expect in incoming logs. For example, if you know that logs coming in to the **tcp** plugin are going to be json you could use this:
+
+```javascript
+input {
+    tcp {
+        port => "6000"
+        codec => "json"
+    }
+}
+```
+
+The above configuration would automatically extract json field data similar to the below configuration. The difference is the below configuration must first shove the log into a field called **message** and then extract the json information from it.
+
+```javascript
+input {
+    tcp {
+        port => "6000"
+    }
+}
+filter {
+    json {
+        source => "message"
+    }
 }
 ```
 
