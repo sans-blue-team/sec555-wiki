@@ -1350,7 +1350,7 @@ This example extracts every instance of PowerShell cmdlets being used in EventID
 filter {
     if [Payload] and [EventID] == 4103 and [SourceName] == "Microsoft-Windows-PowerShell" {
         ruby {
-            code => "event['cmdlets'] =, event['Payload'].downcase.scan(/CommandInvocation\(([a-z0-9-]+)\)/)"
+            code => "event['cmdlets'] = event['Payload'].downcase.scan(/commandinvocation\(([a-z0-9-]+)\)/)"
         }
     }
 }
