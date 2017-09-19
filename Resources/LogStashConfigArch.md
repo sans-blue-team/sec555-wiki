@@ -19,7 +19,7 @@ With the example above you would not have to apply enrichment per each data sour
 
 Config Numbering Graphic
 ------
-The initial recommendation is to use the below numbering schemese with your log files. The scheme uses four digit numbers at the beginning of each configuration file where the first number specifies what the configuration file function is intended for.
+The initial recommendation is to use the below numbering schemes with your log files. The scheme uses four digit numbers at the beginning of each configuration file where the first number specifies what the configuration file function is intended for.
 
 >   ![](./media/image1.png)
 
