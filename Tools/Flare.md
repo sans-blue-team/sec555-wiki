@@ -2,7 +2,7 @@ Flare
 ========
 Abstract
 ---------
-Flare is a python script designed to identify command and control beaconing. It does this by analyzing flow data stored in Elasticsearch.
+Flare is a python script designed to identify command and control beaconing. It does this by analyzing flow data stored in Elasticsearch. It should support flow data from various data sources but currently has only been tested with Suricata flow logs.
 
 **Background:** adversaries like to maintain access to compromised networks and systems. To do this, they often establish a command and control network. Infected systems periodically check in with command and control servers (also known as bot herders)
 
@@ -15,7 +15,7 @@ Flare helps us solve the problem by applying automated analysis of flow data.
 
 Where to Acquire
 ---------
-Flare can be downloaded from https://www.elastic.co/products/elasticsearch. 
+Flare can be downloaded from https://github.com/austin-taylor/flare. 
 
 Examples/Use Case
 ---------
