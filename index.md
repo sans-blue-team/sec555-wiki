@@ -3,8 +3,7 @@ Welcome to the SANS SEC555 Wiki
 
 
 ![Cyber Defense](CyberDefense_logo.jpg)
-### **`SEC555 Portal Version: 1.0.0`**
-### **`Course Version C01_02`**
+### **`SEC555 Portal Version: 1.0.3`**
 
 ---
 
