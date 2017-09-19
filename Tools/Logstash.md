@@ -71,7 +71,7 @@ Below is an example of adding a tag within the filter portion of Logstash:
 ```bash
 filter {
   mutate {
-      add_tags => "windows"
+      add_tag => "windows"
   }
 }
 ```
@@ -81,7 +81,7 @@ Below is an example of adding multiple tags within the filter portion of Logstas
 ```bash
 filter {
   mutate {
-      add_tags => [ "windows", "pci", "critical_asset" ]
+      add_tag => [ "windows", "pci", "critical_asset" ]
   }
 }
 ```
