@@ -92,5 +92,5 @@ source_ip:192.168.0.1 -destination_ip:8.8.8.8
 
 This is an example of looking for network connections that are not going to a private IP address:
 ```bash
--destination_ip:[10.0.0.0 TO 10.255.255.255] -destination_ip:[192.168.0.0 TO 192.168.255.255] -destination_ip:[172.16.0.0 TO 172.16.32.255.255]
+-destination_ip:[10.0.0.0 TO 10.255.255.255] -destination_ip:[192.168.0.0 TO 192.168.255.255] -destination_ip:[172.16.0.0 TO 172.16.31.255.255]
 ```
