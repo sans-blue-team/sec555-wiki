@@ -898,6 +898,7 @@ Filter Enrichment Plugins
 - [dns](#dns)
 - [drop](#drop)
 - [elasticsearch](#filter_elasticsearch)
+- [memoize](#memoize)
 - [geoip](#geoip)
 <!-- - [jdbc_streaming](#jdbc_streaming) -->
 - [mutate](#mutate)
@@ -987,6 +988,8 @@ filter {
 ### filter_elasticsearch
 The **elasticsearch** plugin is community filter plugin used to query Elasticsearch. If a match is found, whatever fields are specified will be appended to the existing log.
 
+This plugin has been out longer and is more mature. However, for a much, much faster plugin that does the same thing check out #memoize.
+
 Consider this scenario, an IDS alert has been received but the alert only contains the source_ip and destination_ip. However, having the DNS name associated with these IP addresses could be valuable to an analyst. If DNS queries and answers are in Elasticsearch, they can be pulled into the IDS alert automatically.
 
 Here is the configuration to do it:
@@ -1005,7 +1008,36 @@ filter {
 
 This configuration would take the destination_ip and check to see if the Elasticsearch index logstash-suricata-dns-* had a previous answer that contained the destination_ip. If a match was found the elasticsearch filter plugin would pull back the query_name and dns_id fields. In this example, the query_name field would be stored into a field called query and the dns_id field would be stored into a field called dns_id.
 
-####Other use cases for the elasticsearch filter plugin:
+---------
+### memoize
+The **logstash-filter-memoize** plugin is community filter plugin used to query Elasticsearch. If a match is found, whatever fields are specified will be appended to the existing log. This plugin is similar to the **logstash-filter-elasticsearch** plugin but supports caching based on a field.
+
+Consider this scenario, an IDS alert has been received but the alert only contains the source_ip and destination_ip. However, having the DNS name associated with these IP addresses could be valuable to an analyst. If DNS queries and answers are in Elasticsearch, they can be pulled into the IDS alert automatically.
+
+Here is the configuration to do it:
+```javascript
+filter {
+    if [event_type] == "alert" {
+        memoize {
+            key => "%{destination_ip}"
+            fields => [ "highest_registered_domain", "query" ]
+            filter_name => "elasticsearch"
+            filter_options => {
+                query => "type:bro_dns AND answers:%{destination_ip}"
+                index => "logstash-bro-*"
+                fields => {
+                    "query" => "destination_fqdn"
+                    "highest_registered_domain" => "destination_highest_registered_domain"
+                }
+            }
+        }
+    }
+}
+```
+
+This configuration would take the destination_ip and check to see if the Elasticsearch index logstash-bro-* had a previous answer that contained the destination_ip. If a match was found the memoize filter plugin would pull back the highest_registered_domain and query fields. In this example, the query field would be stored into a field called destination_fqdn and the highest_registered_domain field would be stored into a field called destination_highest_registered_domain.
+
+####Other use cases for the memoize filter plugin:
 
 - Querying threat intelligence feeds stored in Elasticsearch indexes (**Collective Intelligence Framework** uses Elasticsearch)
 - Building your own custom intelligence feeds and querying them
