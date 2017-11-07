@@ -988,7 +988,7 @@ filter {
 ### filter_elasticsearch
 The **elasticsearch** plugin is community filter plugin used to query Elasticsearch. If a match is found, whatever fields are specified will be appended to the existing log.
 
-This plugin has been out longer and is more mature. However, for a much, much faster plugin that does the same thing check out #memoize.
+If lookups are likely to happen multiple times for the same piece of data consider using this plugin in conjunction to #memoize. It will enable caching of the results and allow Logstash to perform much faster lookups.
 
 Consider this scenario, an IDS alert has been received but the alert only contains the source_ip and destination_ip. However, having the DNS name associated with these IP addresses could be valuable to an analyst. If DNS queries and answers are in Elasticsearch, they can be pulled into the IDS alert automatically.
 
@@ -1010,7 +1010,7 @@ This configuration would take the destination_ip and check to see if the Elastic
 
 ---------
 ### memoize
-The **logstash-filter-memoize** plugin is community filter plugin used to query Elasticsearch. If a match is found, whatever fields are specified will be appended to the existing log. This plugin is similar to the **logstash-filter-elasticsearch** plugin but supports caching based on a field.
+The **logstash-filter-memoize** plugin is community filter plugin used to enable caching for other filter plugins. It is used to wrap itself around another filter plugin and cache the results based on a specific field. Subsequent calls to the same filter plugin with the same field value causes memoize to pull the return value from cache rather than running the filter plugin again. This can **drastically** increase performance assuming caching is acceptable per your use case.
 
 Consider this scenario, an IDS alert has been received but the alert only contains the source_ip and destination_ip. However, having the DNS name associated with these IP addresses could be valuable to an analyst. If DNS queries and answers are in Elasticsearch, they can be pulled into the IDS alert automatically.
 
@@ -1035,7 +1035,7 @@ filter {
 }
 ```
 
-This configuration would take the destination_ip and check to see if the Elasticsearch index logstash-bro-* had a previous answer that contained the destination_ip. If a match was found the memoize filter plugin would pull back the highest_registered_domain and query fields. In this example, the query field would be stored into a field called destination_fqdn and the highest_registered_domain field would be stored into a field called destination_highest_registered_domain.
+This configuration would take the destination_ip and check to see if the Elasticsearch index logstash-bro-* had a previous answer that contained the destination_ip. If a match was found the elasticsearch filter plugin would pull back the highest_registered_domain and query fields. In this example, the query field would be stored into a field called destination_fqdn and the highest_registered_domain field would be stored into a field called destination_highest_registered_domain. Memoize would then cache this so that if the same alert came in 50 times the first alert would be cached and the remaining 49 would pull from that chace.
 
 ####Other use cases for the memoize filter plugin:
 
