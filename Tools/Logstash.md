@@ -992,7 +992,22 @@ If lookups are likely to happen multiple times for the same piece of data consid
 
 Consider this scenario, an IDS alert has been received but the alert only contains the source_ip and destination_ip. However, having the DNS name associated with these IP addresses could be valuable to an analyst. If DNS queries and answers are in Elasticsearch, they can be pulled into the IDS alert automatically.
 
-Here is the configuration to do it:
+Here is the configuration to do it that works with Logstash versions 5.x/6.x:
+```javascript
+filter {
+    if [event_type] == "alert" {
+        elasticsearch {
+            query => "highest_registered_domain:%{highest_registered_domain}"
+            index => "alexa-top1m"
+            fields => {
+                "rank" => "rank"
+            }
+        }
+    }
+}
+```
+
+Here is the configuration to do it that works with Logstash version 2.x:
 ```javascript
 filter {
     if [event_type] == "alert" {
@@ -1280,6 +1295,21 @@ The **rest** plugin is a community filter plugin used to submit a web based REST
 - WHOIS creation date lookups in conjunction with domain_stats.py
 
 This example configuration is used get the entropy score of a DNS domain using the highest_registered_domain field's value (requires freq_server.py listening on 10004):
+```javascript
+filter {
+    rest {
+        request => {
+            url => "http://localhost:20001/domain/creation_date/%{highest_registered_domain}"
+        }
+        sprintf => true
+        json => false
+        target => "domain_creation_date"
+    }
+}
+```
+
+Another example:
+
 ```javascript
 filter {
     rest {
