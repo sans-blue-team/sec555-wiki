@@ -35,4 +35,4 @@ SEC555 LogStash Configs
 
 ### **GitHub**
 > Justin Henderson's (@SecurityMapper) LogStash Configs on GitHub:
-> <https://github.com/SMAPPER/Logstash-Configs/tree/master/configfiles>
+> <https://github.com/HASecuritySolutions/>
