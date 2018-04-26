@@ -75,6 +75,11 @@ This section only applies to students of SEC555 using the wiki within the SEC555
 sudo crontab -e
 ```
 
+<button onclick="copyToClipboard('sudo crontab -e')" style="background-image: url(/clipboard.svg); background-repeat: no-repat; height: 40px; width: 40px;"> 
+</button>
+
+<p> </p>
+
 Then uncomment the cron job for either the 9 AM automatic update or the update after reboot (or both):
 
 ```bash
