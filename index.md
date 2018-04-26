@@ -1,3 +1,27 @@
+<script>
+function copyToClipboard(text) {
+    if (window.clipboardData && window.clipboardData.setData) {
+        // IE specific code path to prevent textarea being shown while dialog is visible.
+        return clipboardData.setData("Text", text); 
+
+    } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+        var textarea = document.createElement("textarea");
+        textarea.textContent = text;
+        textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in MS Edge.
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            return document.execCommand("copy");  // Security exception may be thrown by some browsers.
+        } catch (ex) {
+            console.warn("Copy to clipboard failed.", ex);
+            return false;
+        } finally {
+            document.body.removeChild(textarea);
+        }
+    }
+}
+</script>
+
 Welcome to the SANS SEC555 Wiki
 ----------
 
@@ -27,6 +51,20 @@ There are two things that are **highly recommended** to do before diving in.
 
 1. **Discover how to use the Smart Player**. Videos are played using Smart Player and there are some features you may not know exist without checking [out this guide](/Resources/SmartPlayer.md). The videos created in the wiki took a tremendous amount of time to put together due to adding many features that Smart Player allows such as searching for any word spoken by the presenter and jumping to that section of the video.
 2. If you are a SEC555 student, **enable automatic updates of the wiki and lab content**
+
+How to manually update the wiki
+----------
+
+To manually update the wiki content run the command below.
+
+```bash
+$ sudo pwsh -file /scripts/wiki_update.ps1
+```
+
+<button onclick="copyToClipboard('sudo pwsh  -file /scripts/wiki_update.ps1')" style="background-image: url(/clipboard.svg); background-repeat: no-repat; height: 40px; width: 40px;"> 
+</button>
+
+<p> </p>
 
 Enable Automatic Updates
 ----------
