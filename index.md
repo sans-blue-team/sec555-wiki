@@ -121,8 +121,8 @@ Alumni Mailing List
 
 ---
 
-Join the 555 alumni mailing list:
+Join the 555 alumni Slack channel:
 
-[http://sec555.com/555group](http://sec555.com/555group)
+[https://sec555.com/slack.php](https://sec555.com/slack.php)
 
 ---
