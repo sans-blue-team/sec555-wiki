@@ -1308,6 +1308,8 @@ filter {
 }
 ```
 
+**Note**: If you are using the docker versions of freq_server or domain_stats replace **localhost** in the above example with either **freq_server** or **domain_stats**.
+
 Another example:
 
 ```javascript
@@ -1327,6 +1329,8 @@ filter {
     }
 }
 ```
+
+**Note**: If you are using the docker versions of freq_server or domain_stats replace **localhost** in the above example with either **freq_server** or **domain_stats**.
 
 This example configuration is used to find out the creation date of the highest_registered_domain value (requires domain_stats.py listening on 20000):
 ```javascript
@@ -1348,6 +1352,8 @@ filter {
 }
 ```
 
+**Note**: If you are using the docker versions of freq_server or domain_stats replace **localhost** in the above example with either **freq_server** or **domain_stats**.
+
 This example configuration is used to find out if the highest_registered_domain value is a top 1 million site (requires domain_stats.py listening on 20000):
 ```javascript
 filter {
@@ -1367,6 +1373,8 @@ filter {
     }
 }
 ```
+
+**Note**: If you are using the docker versions of freq_server or domain_stats replace **localhost** in the above example with either **freq_server** or **domain_stats**.
 
 ---------
 ### ruby
