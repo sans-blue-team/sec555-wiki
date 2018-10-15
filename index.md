@@ -58,6 +58,17 @@ How to manually update the wiki
 To manually update the wiki content run the command below.
 
 ```bash
+$ wikiup
+```
+
+<button onclick="copyToClipboard('wikiup')" style="background-image: url(/clipboard.svg); background-repeat: no-repat; height: 40px; width: 40px;"> 
+</button>
+
+<p> </p>
+
+If the above command cannot be found your system is using the prior update script which can be ran using this command below:
+
+```bash
 $ sudo pwsh -file /scripts/wiki_update.ps1
 ```
 
@@ -85,11 +96,11 @@ Then uncomment the cron job for either the 9 AM automatic update or the update a
 ```bash
 # Uncomment the below entry to automatically update the SEC555
 # wiki. The default check occurs at 9 AM but can be changed.
-#0 9 * * * powershell -file /home/student/wiki_update.ps1
+#0 9 * * * /bin/bash /opt/wikiup.sh
 
 # Uncomment the below entry to automatically update the SEC555
 # wiki after each reboot.
-#@reboot powershell -file /home/student/wiki_update.ps1
+#@reboot bin/bash /opt/wikiup.sh
 ```
 
 When finished the cron entry should look similar to this:
@@ -97,11 +108,11 @@ When finished the cron entry should look similar to this:
 ```bash
 # Uncomment the below entry to automatically update the SEC555
 # wiki. The default check occurs at 9 AM but can be changed.
-0 9 * * * powershell -file /home/student/wiki_update.ps1
+0 9 * * * /bin/bash /opt/wikiup.sh
 
 # Uncomment the below entry to automatically update the SEC555
 # wiki after each reboot.
-@reboot powershell -file /home/student/wiki_update.ps1
+@reboot /bin/bash /opt/wikiup.sh
 ```
 
 ---
