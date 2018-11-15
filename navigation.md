@@ -29,7 +29,7 @@ SEC555
 - [freq_server.py](/Tools/freq_server.py.md)
 <!-- Log Agent - beats -->
 - [NXLog](/Tools/NXLog.md)
-- [kopf](/Tools/kopf.md)
+- [Cerebro](/Tools/Cerebro.md)
 <!-- Suricata -->
 
 [Instructors]()
@@ -38,10 +38,9 @@ SEC555
 -	[Justin Henderson](/Instructors/JustinHenderson.md)
 -	#### Instructors
 -	[Seth Misenar](/Instructors/SethMisenar.md)
--	[Eric Conrad](/Instructors/EricConrad.md)
 -	[Tim Garcia](/Instructors/TimGarcia.md)
 -	[John Hubbard](/Instructors/JohnHubbard.md)
--   [David Mashburn](/Instructors/DavidMashburn.md)
+-	[Mick Douglas](https://www.sans.org/instructors/mick-douglas)
 
 [Updates]()
 
