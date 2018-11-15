@@ -19,7 +19,7 @@ Contact
 
 Affiliations
 -------
-[SANS Institute](http://www.sans.org) | **Senior SANS Instructor**
+[SANS Institute](http://www.sans.org) | **SANS Instructor**
 [H & A Security Solutions LLC](https://www.hasecuritysolutions.com) | **CEO**
 
 Bio
