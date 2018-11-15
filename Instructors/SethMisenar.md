@@ -19,7 +19,7 @@ Contact
 
 Affiliations
 -------
-[SANS Institute](http://www.sans.org) | **Senior SANS Instructor**
+[SANS Institute](http://www.sans.org) | **SANS Fellow**
 [Context Security, LLC.](http://www.contextsecurity.com) | **Principal Consultant**
 
 Bio
