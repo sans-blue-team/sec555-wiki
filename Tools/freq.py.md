@@ -17,7 +17,7 @@ freq.py helps us solve the problem by employing frequency tables that map how li
 Where to Acquire
 ---------
 
-https://github.com/MarkBaggett/MarkBaggett/tree/master/freq
+https://github.com/sans-blue-team/freq.py
 
 
 Examples/Use Case
