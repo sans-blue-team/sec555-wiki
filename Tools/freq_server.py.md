@@ -17,7 +17,7 @@ freq_server.py helps us solve the problem by employing frequency tables that map
 Where to Acquire
 ---------
 
-https://github.com/MarkBaggett/MarkBaggett/blob/master/freq/freq_server.py
+https://github.com/sans-blue-team/freq.py/blob/master/freq_server.py
 
 
 Examples/Use Case
