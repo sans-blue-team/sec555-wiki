@@ -1025,6 +1025,8 @@ This configuration would take the destination_ip and check to see if the Elastic
 
 ---------
 ### memoize
+Later versions of Logstash have released a memcache plugin. It is recommended to use the memcache plugin for Logstash versions 6.X and higher.
+
 The **logstash-filter-memoize** plugin is community filter plugin used to enable caching for other filter plugins. It is used to wrap itself around another filter plugin and cache the results based on a specific field. Subsequent calls to the same filter plugin with the same field value causes memoize to pull the return value from cache rather than running the filter plugin again. This can **drastically** increase performance assuming caching is acceptable per your use case.
 
 Consider this scenario, an IDS alert has been received but the alert only contains the source_ip and destination_ip. However, having the DNS name associated with these IP addresses could be valuable to an analyst. If DNS queries and answers are in Elasticsearch, they can be pulled into the IDS alert automatically.
@@ -1390,7 +1392,7 @@ This example configuration is used to calculate the field length of a field call
 ```javascript
 filter {
     ruby {
-        code => "event['certificate_common_name_length'] = event['certificate_common_name'].length;"
+        code => "event.set('certificate_common_name_length', event.get('certificate_common_name').length)"
     }
 }
 ```
@@ -1399,7 +1401,7 @@ This example configuration is used to calculate the number of days a certificate
 ```javascript
 filter {
     ruby {
-        code => "event['certificate_number_days_valid'] = ((event['certificate_not_valid_after'] - event['certificate_not_valid_before']) / 86400).ceil;"
+        code => "event.set('certificate_number_days_valid',((event.get('certificate_not_valid_after') - event.get('certificate_not_valid_before')) / 86400).ceil)"
     }
 }
 ```
@@ -1409,7 +1411,7 @@ This example decodes a base64 value stored in a field called possible_base64_cod
 filter {
     ruby {
         init => "require 'base64'"
-        code => "a = Base64.decode64(event['possible_base64_code']);
+        code => "a = Base64.decode64(event.get('possible_base64_code'));
                  event['base64_decoded'] = a;"
     }
 }
@@ -1420,7 +1422,7 @@ This example extracts every instance of PowerShell cmdlets being used in EventID
 filter {
     if [Payload] and [EventID] == 4103 and [SourceName] == "Microsoft-Windows-PowerShell" {
         ruby {
-            code => "event['cmdlets'] = event['Payload'].downcase.scan(/commandinvocation\(([a-z0-9-]+)\)/)"
+            code => "event.set('cmdlets', event.get('Payload').downcase.scan(/commandinvocation\(([a-z0-9-]+)\)/))"
         }
     }
 }
@@ -1431,14 +1433,14 @@ This example configuration is used to calculate how long it takes Logstash to pr
 ```javascript
 filter {
     ruby {
-        code => "event['task_start'] = Time.now.to_f;"
+        code => "event.set('task_start', Time.now.to_f)"
     }
     Then do something...
     ruby {
-        code => "event['task_end'] = Time.now.to_f;"
+        code => "event.set('task_end', Time.now.to_f)"
     }
     ruby {
-        code => "event['logstash_time'] = event['task_end'] - event['task_start']"
+        code => "event.set('logstash_time', event.get('task_end') - event.get('task_start'))"
     }
     mutate {
         remove_field => [ 'task_start', 'task_end' ]
@@ -1453,10 +1455,10 @@ This example configuration is used to calculate the ratio of bytes uploaded vs b
 ```javascript
 filter {
     ruby {
-        code => "event['byte_ratio_client'] = event['bytes_to_client'].to_f / event['bytes_to_server'].to_f"
+        code => "event.set('byte_ratio_client', event.get('bytes_to_client').to_f / event.get('bytes_to_server').to_f)"
     }
     ruby {
-        code => "event['byte_ratio_server'] = 1 - event['byte_ratio_client']"
+        code => "event.set('byte_ratio_server', 1 - event.get('byte_ratio_client'))"
     }
 }
 ```
@@ -1466,7 +1468,7 @@ This example configuration is used to take an IDS alerts SID # and use it to ret
 filter {
     if [gid] == 1 and [sid] {
         ruby {
-            code => "sid = event['sid']; event['rule'] = `cat /etc/nsm/rules/*.rules | grep sid:#{sid} | head -n1`;"
+            code => "sid = event.get('sid'); event.set('rule', `cat /etc/nsm/rules/*.rules | grep sid:#{sid} | head -n1`)"
         }
     }
 }
