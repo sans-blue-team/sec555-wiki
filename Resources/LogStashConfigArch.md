@@ -31,7 +31,7 @@ SEC555 LogStash Configs
 ------
 
 ### **SEC555 VM**
-> LogStash config files are stored on SEC555VM at: **`/opt/Logstash-Configs/configfiles`**
+> LogStash config files are stored on SEC555VM at: **`/labs/logstash/logstash_configs`**
 
 ### **GitHub**
 > Justin Henderson's (@SecurityMapper) LogStash Configs on GitHub:
